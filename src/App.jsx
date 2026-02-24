@@ -84,9 +84,7 @@ export default function AIQuizApp() {
     // LLMが稀に混入させる不正文字を修復
     // 例: "hoge") , → "hoge",  /  "hoge") ] → "hoge" ]
     jsonStr = jsonStr.replace(/"([^"]*)"\s*\)\s*,/g, '"$1",');
-    jsonStr = jsonStr.replace(/"([^"]*)"\s*\)\s*
-(\s*\])/g, '"$1"
-$2');
+    jsonStr = jsonStr.replace(/"([^"]*)"\s*\)\s*(\s*\])/g, '"$1" $2');
 
     return JSON.parse(jsonStr);
   };
